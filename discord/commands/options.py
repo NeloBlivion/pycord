@@ -36,7 +36,7 @@ __all__ = (
 )
 
 channel_type_map = {
-    "TextChannel": ChannelType.text,
+    "TextChannel": (ChannelType.text, ChannelType.news),
     "VoiceChannel": ChannelType.voice,
     "StageChannel": ChannelType.stage_voice,
     "CategoryChannel": ChannelType.category,
@@ -163,7 +163,10 @@ class Option:
                                 continue
 
                             channel_type = channel_type_map[i.__name__]
-                            self.channel_types.append(channel_type)
+                            try:
+                                self.channel_types.extend(channel_type)
+                            except:
+                                self.channel_types.append(channel_type)
                     input_type = _type
         self.input_type = input_type
         self.required: bool = kwargs.pop("required", True) if "default" not in kwargs else False
