@@ -748,7 +748,7 @@ class CogMixin:
         *,
         package: Optional[str] = None,
         recursive: bool = False,
-        store: bool = True,
+        store: bool = False,
     ) -> Optional[Union[Dict[str, Union[Exception, bool]], List[str]]]:
         """Loads an extension.
 
@@ -863,7 +863,7 @@ class CogMixin:
         *names: str,
         package: Optional[str] = None,
         recursive: bool = False,
-        store: bool = True,
+        store: bool = False,
     ) -> Optional[Union[Dict[str, Union[Exception, bool]], List[str]]]:
         """Loads multiple extensions at once.
 
