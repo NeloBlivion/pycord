@@ -42,6 +42,11 @@ FuncT = TypeVar("FuncT", bound=Callable[..., Any])
 MISSING: Any = discord.utils.MISSING
 
 
+def _cog_special_method(func: FuncT) -> FuncT:
+    func.__cog_special_method__ = None
+    return func
+    
+
 class Cog(Cog):
     def __new__(cls: Type[CogT], *args: Any, **kwargs: Any) -> CogT:
         # For issue 426, we need to store a copy of the command objects
@@ -82,3 +87,19 @@ class Cog(Cog):
                 This does not include subcommands.
         """
         return [c for c in self.__cog_commands__ if c.parent is None]
+    
+    @_cog_special_method
+    async def cog_command_error(self, ctx: discord.ext.commands.Context, error: Exception) -> None:
+        """A special method that is called whenever an error
+        is dispatched inside this cog.
+        This is similar to :func:`.on_command_error` except only applying
+        to the commands inside this cog.
+        This **must** be a coroutine.
+        Parameters
+        -----------
+        ctx: :class:`.Context`
+            The invocation context where the error happened.
+        error: :class:`CommandError`
+            The error that happened.
+        """
+        pass
