@@ -399,6 +399,13 @@ class Cog(metaclass=CogMeta):
         """
         return not hasattr(self.cog_command_error.__func__, "__cog_special_method__")
 
+    def has_application_error_handler(self) -> bool:
+        """:class:`bool`: Checks whether the cog has an error handler for application commands.
+
+        .. versionadded:: 2.0
+        """
+        return not hasattr(self.cog_application_command_error.__func__, "__cog_special_method__")
+
     @_cog_special_method
     def cog_unload(self) -> None:
         """A special method that is called when the cog gets removed.
@@ -441,11 +448,11 @@ class Cog(metaclass=CogMeta):
         return True
 
     @_cog_special_method
-    async def cog_command_error(self, ctx: ApplicationContext, error: Exception) -> None:
+    async def cog_application_command_error(self, ctx: ApplicationContext, error: Exception) -> None:
         """A special method that is called whenever an error
         is dispatched inside this cog.
 
-        This is similar to :func:`.on_command_error` except only applying
+        This is similar to :func:`.on_application_command_error` except only applying
         to the commands inside this cog.
 
         This **must** be a coroutine.
