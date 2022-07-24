@@ -389,7 +389,7 @@ class ApplicationCommand(_BaseCommand, Generic[CogT, P, T]):
 
         try:
             if cog is not None:
-                local = cog.__class__._get_overridden_method(cog.cog_command_error)
+                local = cog.__class__._get_overridden_method(cog.cog_application_command_error)
                 if local is not None:
                     wrapped = wrap_callback(local)
                     await wrapped(ctx, error)
