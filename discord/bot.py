@@ -1061,7 +1061,7 @@ class BotBase(ApplicationCommandMixin, CogMixin, ABC):
             return
 
         cog = context.cog
-        if cog and cog.has_error_handler():
+        if cog and cog.has_application_error_handler():
             return
 
         print(f"Ignoring exception in command {context.command}:", file=sys.stderr)
