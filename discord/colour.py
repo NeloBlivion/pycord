@@ -311,11 +311,13 @@ class Colour:
 
     @classmethod
     def fuchsia(cls: type[CT]) -> CT:
-        """A factory method that returns a :class:`Colour` with a value of ``0xEB459E``.
+        """A factory method that returns a :class:`Colour` with a value of ``0xEB459F``.
 
         .. versionadded:: 2.0
         """
-        return cls(0xEB459E)
+        return cls(0xEB459F)
+
+    pink = fuchsia
 
     @classmethod
     def yellow(cls: type[CT]) -> CT:
@@ -332,14 +334,6 @@ class Colour:
         .. versionadded:: 2.0
         """
         return cls(0xF47FFF)
-
-    @classmethod
-    def pink(cls: type[CT]) -> CT:
-        """A factory method that returns a :class:`Colour` with a value of ``0xEB459F``.
-
-        .. versionadded:: 2.5
-        """
-        return cls(0xEB459F)
 
     @classmethod
     def embed_background(cls: type[CT], theme: str = "dark") -> CT:
