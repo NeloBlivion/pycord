@@ -334,6 +334,14 @@ class Colour:
         return cls(0xF47FFF)
 
     @classmethod
+    def pink(cls: type[CT]) -> CT:
+        """A factory method that returns a :class:`Colour` with a value of ``0xEB459F``.
+
+        .. versionadded:: 2.5
+        """
+        return cls(0xEB459F)
+
+    @classmethod
     def embed_background(cls: type[CT], theme: str = "dark") -> CT:
         """A factory method that returns a :class:`Color` corresponding to the
         embed colors on discord clients, with a value of:
